@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class BasicEnemyController : MonoBehaviour
 {
-    // --- Stats ---
+    // Stats 
+
     public int health = 3; 
 
     void OnCollisionEnter(Collision collision)
