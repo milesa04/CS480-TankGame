@@ -881,7 +881,7 @@ GameObject:
   - component: {fileID: 1390867839}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -997,6 +997,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 3194819637444236568, guid: f34bcc2b50cba408b9cc7be7cb1516eb, type: 3}
   firePoint: {fileID: 1897512172}
   projectileSpeed: 20
+  projectileDamage: 1
 --- !u!114 &1390867840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1052,7 +1053,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &1455228294
 GameObject:
@@ -1173,7 +1174,7 @@ GameObject:
   - component: {fileID: 1897512172}
   m_Layer: 0
   m_Name: Firepoint
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
