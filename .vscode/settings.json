@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "CS480-GroupProject.slnx"
+    "dotnet.defaultSolution": "CS480-TankGame.slnx"
 }

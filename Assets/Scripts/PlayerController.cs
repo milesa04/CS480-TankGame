@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public GameObject projectilePrefab;
     public Transform firePoint;
     public float projectileSpeed = 20f;
+    public int projectileDamage = 1;
 
     void Start()
     {
@@ -31,6 +32,14 @@ public class PlayerController : MonoBehaviour
     void OnJump()
     {
         GameObject projectile = Instantiate(projectilePrefab, firePoint.position, firePoint.rotation);
+
+        Bullet bullet = projectile.GetComponent<Bullet>();
+        if (bullet != null)
+        {
+            bullet.ownerTag = "Player";
+            bullet.damage = projectileDamage;
+        }
+
         Rigidbody projRb = projectile.GetComponent<Rigidbody>();
         projRb.linearVelocity = firePoint.forward * projectileSpeed;
         Destroy(projectile, 3f);

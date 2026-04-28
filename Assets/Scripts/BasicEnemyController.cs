@@ -2,23 +2,39 @@ using UnityEngine;
 
 public class BasicEnemyController : MonoBehaviour
 {
-    // --- Stats ---
-    public int health = 3; 
+    public int maxHealth = 3;
+    public EnemyHealthBar healthBar;
 
-    void OnCollisionEnter(Collision collision)
+    private int currentHealth;
+
+    void Awake()
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        currentHealth = maxHealth;
+    }
+
+    void Start()
+    {
+        if (healthBar == null)
         {
-            TakeDamage(1);
-            Destroy(collision.gameObject); 
+            healthBar = GetComponentInChildren<EnemyHealthBar>();
+        }
+
+        if (healthBar != null)
+        {
+            healthBar.SetFill(1f);
         }
     }
 
     public void TakeDamage(int damageAmount)
     {
-        health -= damageAmount;
+        currentHealth -= damageAmount;
 
-        if (health <= 0)
+        if (healthBar != null)
+        {
+            healthBar.SetFill(Mathf.Clamp01((float)currentHealth / maxHealth));
+        }
+
+        if (currentHealth <= 0)
         {
             Die();
         }
@@ -26,8 +42,12 @@ public class BasicEnemyController : MonoBehaviour
 
     void Die()
     {
-        FindAnyObjectByType<WaveManager>().EnemyDefeated();
-        
-        Destroy(gameObject); 
+        WaveManager wm = FindAnyObjectByType<WaveManager>();
+        if (wm != null)
+        {
+            wm.EnemyDefeated();
+        }
+
+        Destroy(gameObject);
     }
 }
