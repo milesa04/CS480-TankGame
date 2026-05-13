@@ -90,14 +90,17 @@ public class BasicEnemyController : MonoBehaviour
     }
 
     void TryAttack()
+{
+    if (attackTimer <= 0f)
     {
-        if (attackTimer <= 0f)
+        PlayerHealth playerHealth = player.GetComponent<PlayerHealth>();
+        if (playerHealth != null)
         {
-            Debug.Log("Enemy attacks for " + attackDamage + " damage!");
-            // player.GetComponent<PlayerHealth>()?.TakeDamage(attackDamage);
-            attackTimer = attackCooldown;
+            playerHealth.TakeDamage(attackDamage);
         }
+        attackTimer = attackCooldown;
     }
+}
 
     public void TakeDamage(int damageAmount)
     {
